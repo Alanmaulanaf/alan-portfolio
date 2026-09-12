@@ -1,0 +1,667 @@
+---
+import Layout from '../../layouts/Layout.astro';
+import Navbar from '../../components/Navbar.astro';
+
+const base = import.meta.env.BASE_URL.endsWith('/')
+	? import.meta.env.BASE_URL
+	: `${import.meta.env.BASE_URL}/`;
+
+const asset = (path: string) => `${base}${path.replace(/^\/+/, '')}`;
+
+const repositories = [
+	{
+		number: '01',
+		name: 'Mobile Application',
+		description:
+			'Aplikasi Flutter yang digunakan oleh mahasiswa, dosen, dan administrator untuk menjalankan proses evaluasi dosen.',
+		tech: 'Flutter / Dart',
+		url: 'https://github.com/Alanmaulanaf/FlutterEDOM',
+	},
+	{
+		number: '02',
+		name: 'Main Backend',
+		description:
+			'REST API utama yang menangani autentikasi, data evaluasi, pengguna, mata kuliah, serta operasi database.',
+		tech: 'Express.js / MySQL',
+		url: 'https://github.com/Alanmaulanaf/ExpressEDOM',
+	},
+	{
+		number: '03',
+		name: 'Sentiment Analysis API',
+		description:
+			'Service berbasis Flask yang digunakan untuk menganalisis komentar mahasiswa dan mengklasifikasikannya ke dalam kategori sentimen.',
+		tech: 'Flask / IndoRoBERTa',
+		url: 'https://github.com/Alanmaulanaf/FlaskEDOM',
+	},
+];
+---
+
+<Layout
+	title="EDOM — Alan Maulana Fajar"
+	description="Sistem evaluasi dosen berbasis mobile dengan visualisasi data dan analisis sentimen menggunakan IndoRoBERTa."
+>
+	<Navbar />
+
+	<main>
+		<section class="mx-auto max-w-6xl px-6 pb-20 pt-36 md:px-8 md:pb-24 md:pt-40">
+			<a
+				href={`${base}#projects`}
+				class="group inline-flex items-center gap-2 font-mono text-[11px] uppercase tracking-[0.16em] text-[var(--text-dim)] transition hover:text-[var(--text)]"
+			>
+				<span class="transition-transform group-hover:-translate-x-1">←</span>
+				Back to Projects
+			</a>
+
+			<div class="mt-12 grid gap-12 border-t border-[var(--border)] pt-8 md:grid-cols-[1.45fr_0.55fr] md:gap-16">
+				<div>
+					<p class="font-mono text-xs uppercase tracking-[0.18em] text-[var(--accent)]">
+						Software System / Thesis Project
+					</p>
+
+					<h1 class="mt-5 text-5xl font-medium tracking-[-0.045em] text-[var(--text)] md:text-7xl">
+						EDOM
+					</h1>
+
+					<p class="mt-6 max-w-3xl text-xl leading-8 text-[var(--text-muted)] md:text-2xl">
+						Integrated Lecturer Evaluation System with Data Visualization and
+						Sentiment Analysis.
+					</p>
+				</div>
+
+				<div class="grid grid-cols-2 gap-x-8 gap-y-7 text-sm md:grid-cols-1">
+					<div>
+						<p class="font-mono text-[10px] uppercase tracking-[0.16em] text-[var(--text-dim)]">
+							Role
+						</p>
+
+						<p class="mt-2 text-[var(--text)]">Software Developer</p>
+					</div>
+
+					<div>
+						<p class="font-mono text-[10px] uppercase tracking-[0.16em] text-[var(--text-dim)]">
+							System
+						</p>
+
+						<p class="mt-2 text-[var(--text)]">Mobile / Backend / NLP</p>
+					</div>
+
+					<div class="col-span-2 md:col-span-1">
+						<p class="font-mono text-[10px] uppercase tracking-[0.16em] text-[var(--text-dim)]">
+							Stack
+						</p>
+
+						<p class="mt-2 leading-6 text-[var(--text-muted)]">
+							Flutter · Express.js · Flask · MySQL · IndoRoBERTa
+						</p>
+					</div>
+				</div>
+			</div>
+		</section>
+
+		<section class="mx-auto max-w-6xl px-6 pb-24 md:px-8 md:pb-32">
+			<div class="grid overflow-hidden border border-[var(--border)] bg-[var(--surface)] md:grid-cols-[1.15fr_0.85fr]">
+				<!-- Preview -->
+				<div class="flex items-center justify-center border-b border-[var(--border)] bg-[var(--surface-soft)] px-6 py-10 md:border-b-0 md:border-r md:px-10 md:py-12">
+					<div>
+						<p class="mb-5 text-center font-mono text-[10px] uppercase tracking-[0.18em] text-[var(--text-dim)]">
+							Evaluation Results
+						</p>
+
+						<div class="border border-[var(--border)] bg-[var(--surface)] p-3">
+							<img
+								src={asset('images/edom/screenshots/hasil-evaluasi.png')}
+								alt="EDOM lecturer evaluation results"
+								class="h-auto w-[220px] object-contain sm:w-[250px] md:w-[270px]"
+							/>
+						</div>
+					</div>
+				</div>
+
+				<!-- Information -->
+				<div class="flex flex-col justify-between p-7 md:p-9">
+					<div>
+						<p class="font-mono text-[10px] uppercase tracking-[0.18em] text-[var(--accent)]">
+							Application Preview
+						</p>
+
+						<h2 class="mt-5 text-2xl font-medium tracking-[-0.025em] text-[var(--text)] md:text-3xl">
+							Lecturer Evaluation Results
+						</h2>
+
+						<p class="mt-5 max-w-sm text-sm leading-7 text-[var(--text-muted)]">
+							Dosen dapat melihat hasil evaluasi, nilai berdasarkan kategori,
+							komentar mahasiswa, serta distribusi sentimen melalui aplikasi.
+						</p>
+					</div>
+
+					<div class="mt-12">
+						<p class="mb-4 font-mono text-[10px] uppercase tracking-[0.18em] text-[var(--text-dim)]">
+							Client Technology
+						</p>
+
+						<div class="flex flex-wrap gap-x-5 gap-y-2 font-mono text-[10px] uppercase tracking-[0.15em] text-[var(--text-muted)]">
+							<span>Flutter</span>
+							<span>/</span>
+							<span>Dart</span>
+							<span>/</span>
+							<span>Android</span>
+						</div>
+					</div>
+				</div>
+			</div>
+
+			<div class="mt-4 flex flex-col gap-2 font-mono text-[10px] uppercase tracking-[0.16em] text-[var(--text-dim)] sm:flex-row sm:justify-between">
+				<span>EDOM — Lecturer Evaluation System</span>
+				<span>Thesis Project / Software System</span>
+			</div>
+		</section>
+
+		<section class="mx-auto max-w-6xl border-t border-[var(--border)] px-6 py-24 md:px-8 md:py-32">
+			<div class="grid gap-12 md:grid-cols-[0.7fr_2fr] md:gap-16">
+				<div class="flex items-center gap-4">
+					<span class="border border-[var(--accent)] px-2.5 py-1 font-mono text-[11px] text-[var(--accent)]">
+						01
+					</span>
+
+					<p class="text-xs uppercase tracking-[0.2em] text-[var(--text-dim)]">
+						Overview
+					</p>
+				</div>
+
+				<div>
+					<h2 class="max-w-3xl text-3xl font-medium leading-tight text-[var(--text)] md:text-4xl">
+						More Than a Mobile Application.
+					</h2>
+
+					<div class="mt-8 max-w-3xl space-y-5 leading-7 text-[var(--text-muted)]">
+						<p>
+							EDOM dikembangkan sebagai sistem evaluasi dosen yang memungkinkan
+							mahasiswa memberikan penilaian dan komentar melalui aplikasi
+							Android.
+						</p>
+
+						<p>
+							Sistem ini juga menyediakan hasil evaluasi bagi dosen dan
+							administrator, meliputi nilai berdasarkan kategori, visualisasi
+							data, komentar mahasiswa, dan hasil analisis sentimen.
+						</p>
+					</div>
+				</div>
+			</div>
+		</section>
+		<section class="mx-auto max-w-6xl border-t border-[var(--border)] px-6 py-24 md:px-8 md:py-32">
+			<div class="grid gap-12 md:grid-cols-[0.7fr_2fr] md:gap-16">
+				<div>
+					<div class="flex items-center gap-4">
+						<span class="border border-[var(--accent)] px-2.5 py-1 font-mono text-[11px] text-[var(--accent)]">
+							02
+						</span>
+
+						<p class="text-xs uppercase tracking-[0.2em] text-[var(--text-dim)]">
+							Architecture
+						</p>
+					</div>
+				</div>
+
+				<div>
+					<h2 class="max-w-3xl text-3xl font-medium leading-tight tracking-tight text-[var(--text)] md:text-5xl">
+						One System, Connected Through Multiple Services.
+					</h2>
+
+					<p class="mt-6 max-w-2xl leading-7 text-[var(--text-muted)]">
+						Aplikasi mobile berkomunikasi dengan backend utama melalui REST API,
+						sedangkan proses analisis sentimen ditangani oleh service NLP
+						terpisah berbasis Flask.
+					</p>
+
+					<div class="mt-14 border-t border-[var(--border)]">
+						<div class="grid gap-5 border-b border-[var(--border)] py-7 sm:grid-cols-[120px_1fr_auto]">
+							<span class="font-mono text-xs text-[var(--text-dim)]">01</span>
+
+							<div>
+								<p class="text-xs uppercase tracking-widest text-[var(--text-dim)]">
+									Client
+								</p>
+
+								<h3 class="mt-2 text-xl → text-[var(--text)]">
+									Flutter Android Application
+								</h3>
+							</div>
+
+							<span class="text-sm text-[var(--text-dim)]">REST API ↓</span>
+						</div>
+
+						<div class="grid gap-5 border-b border-[var(--border)] py-7 sm:grid-cols-[120px_1fr_auto]">
+							<span class="font-mono text-xs text-[var(--text-dim)]">02</span>
+
+							<div>
+								<p class="text-xs uppercase tracking-widest text-[var(--text-dim)]">
+									Main Backend
+								</p>
+
+								<h3 class="mt-2 text-xl → text-[var(--text)]">Express.js</h3>
+							</div>
+
+							<span class="text-sm text-[var(--text-dim)]">↓</span>
+						</div>
+
+						<div class="grid gap-5 border-b border-[var(--border)] py-7 sm:grid-cols-[120px_1fr]">
+							<span class="font-mono text-xs text-[var(--text-dim)]">03</span>
+
+							<div>
+								<p class="text-xs uppercase tracking-widest text-[var(--text-dim)]">
+									Database
+								</p>
+
+								<h3 class="mt-2 text-xl → text-[var(--text)]">MySQL</h3>
+							</div>
+						</div>
+					</div>
+
+					<div class="mt-12">
+						<p class="text-xs uppercase tracking-[0.18em] text-[var(--text-dim)]">
+							Sentiment pipeline
+						</p>
+
+						<div class="mt-5 flex flex-col gap-3 text-sm text-zinc-400 sm:flex-row sm:items-center">
+							<span class="border border-[var(--border)] bg-[var(--surface)] px-4 py-3 text-sm text-[var(--text-muted)]">
+								Student Comment
+							</span>
+
+							<span class="text-[var(--accent)]">→</span>
+
+							<span class="border border-[var(--border)] px-4 py-3">
+								Flask API
+							</span>
+
+							<span class="text-[var(--accent)]">→</span>
+
+							<span class="border border-[var(--border)] px-4 py-3">
+								IndoRoBERTa
+							</span>
+
+							<span class="text-[var(--accent)]">→</span>
+
+							<span class="border border-[var(--border)] px-4 py-3">
+								Sentiment Result
+							</span>
+						</div>
+					</div>
+				</div>
+			</div>
+		</section>
+		<section class="mx-auto max-w-6xl border-t border-[var(--border)] px-6 py-24 md:px-8 md:py-32">
+			<div class="grid gap-12 md:grid-cols-[0.7fr_2fr] md:gap-16">
+				<div>
+					<div class="flex items-center gap-4">
+						<span class="border border-[var(--accent)] px-2.5 py-1 font-mono text-[11px] text-[var(--accent)]">
+							03
+						</span>
+
+						<p class="text-xs uppercase tracking-[0.2em] text-[var(--text-dim)]">
+							Key Features
+						</p>
+					</div>
+				</div>
+
+				<div>
+					<div class="border-t border-[var(--border)]">
+						<div class="group grid gap-5 border-b border-[var(--border)] py-8 sm:grid-cols-[80px_1fr]">
+							<span class="font-mono text-xs text-[var(--text-dim)] transition group-hover:text-[var(--accent)]">
+								01
+							</span>
+
+							<div>
+								<h3 class="text-xl text-[var(--text)]">Role-Based Access</h3>
+
+								<p class="mt-3 max-w-2xl leading-7 text-[var(--text-muted)]">
+									Fungsi aplikasi disesuaikan dengan role pengguna, yaitu
+									administrator, dosen, dan mahasiswa.
+								</p>
+							</div>
+						</div>
+
+						<div class="group grid gap-5 border-b border-[var(--border)] py-8 sm:grid-cols-[80px_1fr]">
+							<span class="font-mono text-xs text-[var(--text-dim)] transition group-hover:text-[var(--accent)]">
+								02
+							</span>
+
+							<div>
+								<h3 class="text-xl text-[var(--text)]">Lecturer Evaluation</h3>
+
+								<p class="mt-3 max-w-2xl leading-7 text-[var(--text-muted)]">
+									Mahasiswa dapat memberikan penilaian terhadap dosen
+									berdasarkan pertanyaan evaluasi serta menambahkan komentar
+									melalui aplikasi.
+								</p>
+							</div>
+						</div>
+
+						<div class="group grid gap-5 border-b border-[var(--border)] py-8 sm:grid-cols-[80px_1fr]">
+							<span class="font-mono text-xs text-[var(--text-dim)] transition group-hover:text-[var(--accent)]">
+								03
+							</span>
+
+							<div>
+								<h3 class="text-xl text-[var(--text)]">
+									Evaluation Visualization
+								</h3>
+
+								<p class="mt-3 max-w-2xl leading-7 text-[var(--text-muted)]">
+									Hasil evaluasi disajikan melalui visualisasi nilai berdasarkan
+									kategori dan ringkasan data evaluasi.
+								</p>
+							</div>
+						</div>
+
+						<div class="group grid gap-5 border-b border-[var(--border)] py-8 sm:grid-cols-[80px_1fr]">
+							<span class="font-mono text-xs text-[var(--text-dim)] transition group-hover:text-[var(--accent)]">
+								04
+							</span>
+
+							<div>
+								<h3 class="text-xl text-[var(--text)]">Sentiment Analysis</h3>
+
+								<p class="mt-3 max-w-2xl leading-7 text-[var(--text-muted)]">
+									Komentar mahasiswa dianalisis menggunakan model IndoRoBERTa
+									yang telah melalui proses fine-tuning, kemudian
+									diklasifikasikan ke dalam sentimen positif, netral, atau
+									negatif.
+								</p>
+							</div>
+						</div>
+					</div>
+				</div>
+			</div>
+		</section>
+
+		<section class="mx-auto max-w-6xl border-t border-[var(--border)] px-6 py-24 md:px-8 md:py-32">
+			<div class="grid gap-12 md:grid-cols-[0.7fr_2fr] md:gap-16">
+				<div>
+					<div class="flex items-center gap-4">
+						<span class="border border-[var(--accent)] px-2.5 py-1 font-mono text-[11px] text-[var(--accent)]">
+							04
+						</span>
+
+						<p class="text-xs uppercase tracking-[0.2em] text-[var(--text-dim)]">
+							Screenshots
+						</p>
+					</div>
+				</div>
+
+				<div>
+					<h2 class="max-w-3xl text-3xl font-medium tracking-tight text-[var(--text)] md:text-5xl">
+						A Closer Look at EDOM.
+					</h2>
+
+					<p class="mt-5 max-w-2xl leading-7 text-[var(--text-muted)]">
+						Beberapa tampilan aplikasi yang menunjukkan proses evaluasi,
+						komentar mahasiswa, dan visualisasi hasil analisis sentimen.
+					</p>
+				</div>
+			</div>
+
+			<div class="grid gap-5 sm:grid-cols-2 lg:grid-cols-4">
+				<figure class="group">
+					<button
+						type="button"
+						class="flex min-h-[380px] w-full cursor-zoom-in items-center justify-center overflow-hidden border border-[var(--border)] bg-[var(--surface-soft)] px-5 py-7 transition duration-300 group-hover:border-[var(--text-dim)]"
+						data-image-preview
+						data-src={asset('images/edom/login-page.png')}
+						data-alt="Halaman login EDOM"
+						aria-label="Perbesar screenshot halaman login EDOM"
+					>
+						<img
+							src={asset('images/edom/login-page.png')}
+							alt="Halaman login EDOM"
+							class="max-h-[330px] w-auto object-contain transition duration-500 ease-out group-hover:scale-[1.15]"
+						/>
+					</button>
+
+					<figcaption class="pt-5">
+						<div class="flex gap-4">
+							<span class="pt-0.5 font-mono text-[10px] text-[var(--accent)]">
+								01
+							</span>
+
+							<div>
+								<p class="text-sm text-[var(--text)]">Login Screen</p>
+
+								<p class="mt-1 text-xs leading-5 text-[var(--text-dim)]">
+									Lecturer login screen.
+								</p>
+							</div>
+						</div>
+					</figcaption>
+				</figure>
+				<figure class="group">
+					<button
+						type="button"
+						class="flex min-h-[380px] w-full cursor-zoom-in items-center justify-center overflow-hidden border border-[var(--border)] bg-[var(--surface-soft)] px-5 py-7 transition duration-300 group-hover:border-[var(--text-dim)]"
+						data-image-preview
+						data-src={asset('images/edom/screenshots/form-evaluasi.png')}
+						data-alt="Form evaluasi dosen EDOM"
+						aria-label="Perbesar screenshot form evaluasi EDOM"
+					>
+						<img
+							src={asset('images/edom/screenshots/form-evaluasi.png')}
+							alt="Form evaluasi dosen EDOM"
+							class="max-h-[330px] w-auto object-contain transition duration-500 ease-out group-hover:scale-[1.15]"
+						/>
+					</button>
+
+					<figcaption class="pt-5">
+						<div class="flex gap-4">
+							<span class="pt-0.5 font-mono text-[10px] text-[var(--accent)]">
+								02
+							</span>
+
+							<div>
+								<p class="text-sm text-[var(--text)]">Evaluation Form</p>
+
+								<p class="mt-1 text-xs leading-5 text-[var(--text-dim)]">
+									Student lecturer assessment form.
+								</p>
+							</div>
+						</div>
+					</figcaption>
+				</figure>
+
+				<figure class="group">
+					<button
+						type="button"
+						class="flex min-h-[380px] w-full cursor-zoom-in items-center justify-center overflow-hidden border border-[var(--border)] bg-[var(--surface-soft)] px-5 py-7 transition duration-300 group-hover:border-[var(--text-dim)]"
+						data-image-preview
+						data-src={asset('images/edom/screenshots/daftar-komentar.png')}
+						data-alt="Daftar komentar mahasiswa EDOM"
+						aria-label="Perbesar screenshot form evaluasi EDOM"
+					>
+						<img
+							src={asset('images/edom/screenshots/daftar-komentar.png')}
+							alt="Daftar komentar mahasiswa EDOM"
+							class="max-h-[330px] w-auto object-contain transition duration-500 ease-out group-hover:scale-[1.15]"
+						/>
+					</button>
+
+					<figcaption class="pt-5">
+						<div class="flex gap-4">
+							<span class="pt-0.5 font-mono text-[10px] text-[var(--accent)]">
+								03
+							</span>
+
+							<div>
+								<p class="text-sm text-[var(--text)]">Student Feedback</p>
+
+								<p class="mt-1 text-xs leading-5 text-[var(--text-dim)]">
+									Written feedback from evaluations.
+								</p>
+							</div>
+						</div>
+					</figcaption>
+				</figure>
+
+				<figure class="group">
+					<button
+						type="button"
+						class="flex min-h-[380px] w-full cursor-zoom-in items-center justify-center overflow-hidden border border-[var(--border)] bg-[var(--surface-soft)] px-5 py-7 transition duration-300 group-hover:border-[var(--text-dim)]"
+						data-image-preview
+						data-src={asset('images/edom/screenshots/grafik-sentimen.png')}
+						data-alt="Visualisasi sentimen EDOM"
+						aria-label="Perbesar screenshot form evaluasi EDOM"
+					>
+						<img
+							src={asset('images/edom/screenshots/grafik-sentimen.png')}
+							alt="Visualisasi sentimen EDOM"
+							class="max-h-[330px] w-auto object-contain transition duration-500 ease-out group-hover:scale-[1.15]"
+						/>
+					</button>
+
+					<figcaption class="pt-5">
+						<div class="flex gap-4">
+							<span class="pt-0.5 font-mono text-[10px] text-[var(--accent)]">
+								04
+							</span>
+
+							<div>
+								<p class="text-sm text-[var(--text)]">
+									Sentiment Visualization
+								</p>
+
+								<p class="mt-1 text-xs leading-5 text-[var(--text-dim)]">
+									Positive, neutral, and negative feedback.
+								</p>
+							</div>
+						</div>
+					</figcaption>
+				</figure>
+			</div>
+
+			<dialog
+				id="image-lightbox"
+				class="m-auto max-h-[92vh] max-w-[92vw] bg-transparent p-0 backdrop:bg-black/80"
+			>
+				<div class="relative flex items-center justify-center border border-[var(--border)] bg-[var(--surface)] p-4 md:p-6">
+					<button
+						type="button"
+						id="close-lightbox"
+						class="absolute right-3 top-3 z-20 flex h-9 w-9 items-center justify-center border border-[var(--border)] bg-[var(--bg)] text-lg text-[var(--text-muted)] transition hover:border-[var(--text-dim)] hover:text-[var(--text)]"
+						aria-label="Tutup preview gambar"
+					>
+						×
+					</button>
+
+					<img
+						id="lightbox-image"
+						src=""
+						alt=""
+						class="max-h-[82vh] max-w-[85vw] object-contain"
+					/>
+				</div>
+			</dialog>
+		</section>
+
+		<section class="mx-auto max-w-6xl border-t border-[var(--border)] px-6 py-24 md:px-8 md:py-32">
+			<div class="grid gap-12 md:grid-cols-[0.7fr_2fr] md:gap-16">
+				<div>
+					<div class="flex items-center gap-4">
+						<span class="border border-[var(--accent)] px-2.5 py-1 font-mono text-[11px] text-[var(--accent)]">
+							05
+						</span>
+
+						<p class="text-xs uppercase tracking-[0.2em] text-[var(--text-dim)]">
+							Source Code
+						</p>
+					</div>
+
+					<p class="mt-5 max-w-xs text-sm leading-6 text-[var(--text-dim)]">
+						Sistem EDOM dibagi menjadi tiga repository yang masing-masing
+						menangani bagian berbeda dari aplikasi.
+					</p>
+				</div>
+
+				<div class="space-y-4">
+					{repositories.map((repo) => (
+						<article class="group border border-[var(--border)] bg-[var(--surface)] px-6 py-6 transition duration-300 hover:border-[var(--text-dim)] md:px-7 md:py-7">
+							<div class="grid gap-5 sm:grid-cols-[auto_1fr_auto]">
+								<div>
+									<span class="font-mono text-xs text-[var(--text-dim)] transition group-hover:text-[var(--accent)]">
+										{repo.number}
+									</span>
+								</div>
+
+								<div>
+									<p class="text-xs uppercase tracking-[0.16em] text-[var(--text-dim)]">
+										{repo.tech}
+									</p>
+
+									<h3 class="mt-2 text-xl font-medium tracking-tight text-[var(--text)] md:text-2xl">
+										{repo.name}
+									</h3>
+
+									<p class="mt-3 max-w-2xl text-sm leading-7 text-[var(--text-muted)] md:text-base">
+										{repo.description}
+									</p>
+								</div>
+
+								<div class="sm:pl-8">
+									<a
+										href={repo.url}
+										target="_blank"
+										rel="noopener noreferrer"
+										class="group/link inline-flex items-center gap-2 border-b border-[var(--border)] pb-1 text-sm text-[var(--text-muted)] transition hover:border-[var(--accent)] hover:text-[var(--accent)]"
+									>
+										GitHub
+										<span class="transition-transform duration-200 group-hover/link:-translate-y-0.5 group-hover/link:translate-x-0.5">
+											↗
+										</span>
+									</a>
+								</div>
+							</div>
+						</article>
+					))}
+				</div>
+			</div>
+		</section>
+	</main>
+</Layout>
+<script>
+	const lightbox = document.querySelector('#image-lightbox');
+	const lightboxImage = document.querySelector('#lightbox-image');
+	const closeButton = document.querySelector('#close-lightbox');
+
+	const previewButtons = document.querySelectorAll('[data-image-preview]');
+
+	if (
+		lightbox instanceof HTMLDialogElement &&
+		lightboxImage instanceof HTMLImageElement
+	) {
+		previewButtons.forEach((button) => {
+			button.addEventListener('click', () => {
+				const src = button.getAttribute('data-src');
+				const alt = button.getAttribute('data-alt');
+
+				if (!src) return;
+
+				lightboxImage.src = src;
+				lightboxImage.alt = alt ?? '';
+
+				lightbox.showModal();
+			});
+		});
+
+		closeButton?.addEventListener('click', () => {
+			lightbox.close();
+		});
+
+		lightbox.addEventListener('click', (event) => {
+			if (event.target === lightbox) {
+				lightbox.close();
+			}
+		});
+
+		lightbox.addEventListener('close', () => {
+			lightboxImage.src = '';
+			lightboxImage.alt = '';
+		});
+	}
+</script>

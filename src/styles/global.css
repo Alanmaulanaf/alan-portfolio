@@ -1,0 +1,596 @@
+@import "tailwindcss";
+
+:root {
+	--bg: #0d1117;
+	--surface: #131922;
+	--surface-soft: #19212b;
+
+	--text: #f3f4f6;
+	--text-muted: #9aa3af;
+	--text-dim: #626b78;
+
+	--border: #26303c;
+
+	--accent: #6ea8fe;
+	--accent-secondary: #4fd1c5;
+	--accent-warm: #d9955b;
+}
+
+html {
+	scroll-behavior: smooth;
+}
+
+body {
+	margin: 0;
+	min-height: 100vh;
+	background: var(--bg);
+	color: var(--text);
+
+	font-family:
+		Inter,
+		ui-sans-serif,
+		system-ui,
+		-apple-system,
+		BlinkMacSystemFont,
+		"Segoe UI",
+		sans-serif;
+}
+
+::selection {
+	background: var(--accent);
+	color: #0d1117;
+}
+
+/* ================================
+   GLOBAL BACKGROUND
+================================ */
+
+.site-background {
+	position: fixed;
+	inset: 0;
+	z-index: 0;
+
+	overflow: hidden;
+	pointer-events: none;
+
+	background:
+		radial-gradient(
+			circle at 82% 8%,
+			rgba(110, 168, 254, 0.055),
+			transparent 28%
+		),
+		radial-gradient(
+			circle at 8% 72%,
+			rgba(79, 209, 197, 0.035),
+			transparent 24%
+		);
+}
+
+
+/* =================================
+   GRID
+================================= */
+
+.background-grid {
+	position: absolute;
+	inset: 0;
+
+	background-image:
+		linear-gradient(
+			rgba(110, 168, 254, 0.032) 1px,
+			transparent 1px
+		),
+		linear-gradient(
+			90deg,
+			rgba(110, 168, 254, 0.032) 1px,
+			transparent 1px
+		);
+
+	background-size: 64px 64px;
+
+	mask-image: linear-gradient(
+		to bottom,
+		rgba(0, 0, 0, 0.95) 0%,
+		rgba(0, 0, 0, 0.6) 42%,
+		rgba(0, 0, 0, 0.2) 75%,
+		transparent 100%
+	);
+}
+
+
+/* Larger / major grid lines */
+
+.background-grid::before {
+	content: '';
+
+	position: absolute;
+	inset: 0;
+
+	background-image:
+		linear-gradient(
+			rgba(110, 168, 254, 0.045) 1px,
+			transparent 1px
+		),
+		linear-gradient(
+			90deg,
+			rgba(110, 168, 254, 0.045) 1px,
+			transparent 1px
+		);
+
+	background-size: 256px 256px;
+
+	opacity: 0.65;
+}
+
+
+/* Small technical dots */
+
+.background-grid::after {
+	content: '';
+
+	position: absolute;
+	inset: 0;
+
+	background-image: radial-gradient(
+		circle,
+		rgba(154, 163, 175, 0.16) 1px,
+		transparent 1.2px
+	);
+
+	background-size: 64px 64px;
+	background-position: 32px 32px;
+
+	opacity: 0.32;
+}
+
+/* =================================
+   ABSTRACT BOXES
+================================= */
+
+@property --box-angle {
+	syntax: '<angle>';
+	initial-value: 0deg;
+	inherits: false;
+}
+
+.abstract-box {
+	position: absolute;
+
+	left: var(--x, 50%);
+	top: var(--y, 50%);
+
+	border: 1px solid rgba(110, 168, 254, 0.08);
+	pointer-events: none;
+
+	transform:
+		translate(-50%, -50%)
+		rotate(var(--rotation, 0deg));
+
+	transition:
+		left 12s cubic-bezier(0.4, 0, 0.2, 1),
+		top 12s cubic-bezier(0.4, 0, 0.2, 1),
+		transform 12s cubic-bezier(0.4, 0, 0.2, 1);
+
+	will-change: left, top, transform;
+}
+
+
+/* Cahaya yang berjalan mengitari border */
+.abstract-box::before {
+	content: '';
+
+	position: absolute;
+	inset: -1px;
+
+	padding: 1px;
+
+	background: conic-gradient(
+		from var(--box-angle),
+		transparent 0deg,
+		transparent 280deg,
+		rgba(255, 255, 255, 0.04) 300deg,
+		rgba(255, 255, 255, 0.5) 325deg,
+		rgba(110, 168, 254, 0.65) 340deg,
+		rgba(255, 255, 255, 0.12) 350deg,
+		transparent 360deg
+	);
+
+	-webkit-mask:
+		linear-gradient(#000 0 0) content-box,
+		linear-gradient(#000 0 0);
+
+	-webkit-mask-composite: xor;
+
+	mask-composite: exclude;
+
+	animation: box-border-travel 8s linear infinite;
+}
+
+
+/* Sedikit detail titik di sudut */
+.abstract-box::after {
+	content: '';
+
+	position: absolute;
+
+	top: -2px;
+	left: -2px;
+
+	width: 4px;
+	height: 4px;
+
+	background: var(--accent);
+
+	opacity: 0.35;
+}
+
+
+/* BOX 1 */
+
+.abstract-box-1 {
+	--x: 92%;
+	--y: 18%;
+	--rotation: 16deg;
+
+	width: 310px;
+	height: 310px;
+}
+
+.abstract-box-1::before {
+	animation-duration: 9s;
+	animation-delay: 0s;
+}
+
+.abstract-box-2 {
+	--x: 7%;
+	--y: 58%;
+	--rotation: -11deg;
+
+	width: 380px;
+	height: 380px;
+
+	border-color: rgba(79, 209, 197, 0.065);
+}
+
+.abstract-box-2::before {
+	background: conic-gradient(
+		from var(--box-angle),
+		transparent 0deg,
+		transparent 285deg,
+		rgba(79, 209, 197, 0.05) 305deg,
+		rgba(255, 255, 255, 0.4) 327deg,
+		rgba(79, 209, 197, 0.65) 342deg,
+		rgba(79, 209, 197, 0.1) 353deg,
+		transparent 360deg
+	);
+
+	animation-duration: 18s;
+	animation-delay: -4s;
+}
+
+.abstract-box-3 {
+	--x: 83%;
+	--y: 84%;
+	--rotation: 32deg;
+
+	width: 190px;
+	height: 190px;
+
+	border-color: rgba(217, 149, 91, 0.055);
+}
+
+.abstract-box-3::before {
+	background: conic-gradient(
+		from var(--box-angle),
+		transparent 0deg,
+		transparent 290deg,
+		rgba(217, 149, 91, 0.04) 305deg,
+		rgba(255, 255, 255, 0.36) 328deg,
+		rgba(217, 149, 91, 0.6) 343deg,
+		rgba(217, 149, 91, 0.08) 353deg,
+		transparent 360deg
+	);
+
+	animation-duration: 20s;
+	animation-delay: -4s;
+}
+
+/* Border travel animation */
+
+@keyframes box-border-travel {
+	from {
+		--box-angle: 0deg;
+	}
+
+	to {
+		--box-angle: 360deg;
+	}
+}
+
+/* =================================
+   ABSTRACT LINES
+================================= */
+
+.abstract-line {
+	position: absolute;
+
+	left: var(--x, 50%);
+	top: var(--y, 50%);
+
+	width: var(--line-width, 320px);
+	height: 1px;
+
+	overflow: hidden;
+	transform-origin: center;
+
+	transform:
+		translate(-50%, -50%)
+		rotate(var(--rotation, 0deg));
+
+	background: linear-gradient(
+		90deg,
+		transparent,
+		rgba(110, 168, 254, 0.04),
+		rgba(110, 168, 254, 0.13),
+		rgba(110, 168, 254, 0.04),
+		transparent
+	);
+
+	transition:
+		left 12s cubic-bezier(0.4, 0, 0.2, 1),
+		top 12s cubic-bezier(0.4, 0, 0.2, 1),
+		transform 12s cubic-bezier(0.4, 0, 0.2, 1),
+		width 12s cubic-bezier(0.4, 0, 0.2, 1);
+
+	will-change: left, top, transform, width;
+}
+
+
+/* Cahaya yang bergerak di SEMUA abstract line */
+.abstract-line::after {
+	content: '';
+
+	position: absolute;
+	top: 0;
+	left: -30%;
+
+	width: 25%;
+	height: 1px;
+
+	background: linear-gradient(
+		90deg,
+		transparent,
+		rgba(255, 255, 255, 0.05),
+		rgba(255, 255, 255, 0.5),
+		rgba(255, 255, 255, 0.05),
+		transparent
+	);
+
+	filter: blur(0.15px);
+
+	animation-name: line-travel;
+	animation-timing-function: linear;
+	animation-iteration-count: infinite;
+}
+
+
+/* ===============================
+   LINE POSITIONS
+=============================== */
+
+.abstract-line-1 {
+	--x: 88%;
+	--y: 27%;
+	--rotation: -29deg;
+	--line-width: 560px;
+}
+
+.abstract-line-1::after {
+	animation-duration: 7s;
+	animation-delay: 0s;
+}
+
+.abstract-line-2 {
+	--x: 12%;
+	--y: 68%;
+	--rotation: 21deg;
+	--line-width: 620px;
+
+	background: linear-gradient(
+		90deg,
+		transparent,
+		rgba(79, 209, 197, 0.035),
+		rgba(79, 209, 197, 0.12),
+		rgba(79, 209, 197, 0.035),
+		transparent
+	);
+}
+
+.abstract-line-2::after {
+	animation-duration: 8.5s;
+	animation-delay: -3s;
+}
+
+.abstract-line-3 {
+	--x: 74%;
+	--y: 43%;
+	--rotation: 90deg;
+	--line-width: 260px;
+}
+
+.abstract-line-3::after {
+	animation-duration: 9s;
+	animation-delay: -1.5s;
+}
+
+.abstract-line-4 {
+	--x: 18%;
+	--y: 16%;
+	--rotation: 12deg;
+	--line-width: 340px;
+
+	opacity: 0.7;
+}
+
+.abstract-line-4::after {
+	animation-duration: 9s;
+	animation-delay: -5s;
+}
+
+.abstract-line-5 {
+	--x: 86%;
+	--y: 84%;
+	--rotation: -15deg;
+	--line-width: 430px;
+
+	opacity: 0.65;
+
+	background: linear-gradient(
+		90deg,
+		transparent,
+		rgba(217, 149, 91, 0.025),
+		rgba(217, 149, 91, 0.09),
+		rgba(217, 149, 91, 0.025),
+		transparent
+	);
+}
+
+.abstract-line-5::after {
+	animation-duration: 10s;
+	animation-delay: -2s;
+}
+
+
+/* ===============================
+   MOVING LIGHT
+=============================== */
+
+@keyframes line-travel {
+	0% {
+		left: -30%;
+		opacity: 0;
+	}
+
+	8% {
+		opacity: 1;
+	}
+
+	88% {
+		opacity: 1;
+	}
+
+	100% {
+		left: 110%;
+		opacity: 0;
+	}
+}
+
+/* =================================
+   SMALL TECHNICAL MARKS
+================================= */
+
+.background-mark {
+	position: absolute;
+
+	width: 34px;
+	height: 34px;
+
+	opacity: 0.34;
+}
+
+
+.background-mark::before,
+.background-mark::after {
+	content: '';
+
+	position: absolute;
+
+	background: rgba(110, 168, 254, 0.28);
+}
+
+
+.background-mark::before {
+	top: 50%;
+	left: 0;
+
+	width: 100%;
+	height: 1px;
+}
+
+
+.background-mark::after {
+	top: 0;
+	left: 50%;
+
+	width: 1px;
+	height: 100%;
+}
+
+
+.background-mark-1 {
+	top: 22%;
+	left: 8%;
+}
+
+
+.background-mark-2 {
+	right: 12%;
+	bottom: 12%;
+
+	transform: rotate(45deg);
+
+	opacity: 0.22;
+}
+
+
+/* =================================
+   MOBILE
+================================= */
+
+@media (max-width: 768px) {
+	.background-grid {
+		background-size: 48px 48px;
+	}
+
+	.background-grid::before {
+		background-size: 192px 192px;
+	}
+
+	.background-grid::after {
+		background-size: 48px 48px;
+		background-position: 24px 24px;
+	}
+
+	.abstract-box-1 {
+		right: -170px;
+	}
+
+	.abstract-box-2 {
+		left: -250px;
+	}
+
+	.abstract-box-3 {
+		display: none;
+	}
+
+	.abstract-line-3 {
+		display: none;
+	}
+
+	.background-mark {
+		opacity: 0.18;
+	}
+}
+
+
+/* Accessibility */
+
+@media (prefers-reduced-motion: reduce) {
+	.abstract-box,
+	.abstract-line,
+	.abstract-box::before,
+	.abstract-line::after {
+		transition: none;
+	
+	}
+}

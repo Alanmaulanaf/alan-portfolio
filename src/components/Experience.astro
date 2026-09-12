@@ -1,0 +1,146 @@
+---
+const experiences = [
+	{
+		number: '01',
+		type: 'Internship / PKL',
+		company: 'Dinas Komunikasi dan Informatika',
+		role: 'Mobile Application Development',
+		period: 'Oct 2024 - Nov 2024',
+		description:
+			'Mengembangkan aplikasi mobile berbasis Flutter sebagai bagian dari kegiatan PKL, dengan fokus pada implementasi antarmuka, fungsi aplikasi, dan pengelolaan data lokal menggunakan SQLite.',
+		stack: ['Flutter', 'Dart', 'SQLite'],
+	},
+];
+---
+
+<section
+	id="experience"
+	class="mx-auto max-w-6xl border-t border-[var(--border)] px-6 py-24 md:px-8 md:py-32"
+>
+	<!-- Section heading -->
+	<div class="grid gap-12 md:grid-cols-[0.7fr_2fr] md:gap-16">
+		<div>
+			<div class="flex items-center gap-4">
+				<span
+					class="border border-[var(--accent)] px-2.5 py-1 font-mono text-[11px] text-[var(--accent)]"
+				>
+					03
+				</span>
+
+				<p
+					class="text-xs uppercase tracking-[0.2em] text-[var(--text-dim)]"
+				>
+					Experience
+				</p>
+			</div>
+		</div>
+
+		<div>
+			<p
+				class="mb-5 font-mono text-xs uppercase tracking-[0.18em] text-[var(--accent)]"
+			>
+				Professional Experience
+			</p>
+
+			<h2
+				class="max-w-3xl text-3xl font-medium leading-tight tracking-[-0.03em] text-[var(--text)] md:text-5xl"
+			>
+				Learning Through Real Development Experience.
+			</h2>
+
+			<p
+				class="mt-6 max-w-2xl text-[15px] leading-7 text-[var(--text-muted)]"
+			>
+				Pengalaman yang membantu saya memahami proses pengembangan
+				aplikasi di luar project akademik dan menerapkan kemampuan
+				teknis yang saya pelajari.
+			</p>
+		</div>
+	</div>
+
+	<!-- Experience list -->
+	<div class="mt-16 md:ml-[calc(25%+1rem)]">
+		<div class="border-t border-[var(--border)]">
+			{
+				experiences.map((experience) => (
+					<article
+						class="group border-b border-[var(--border)] py-10 md:py-12"
+					>
+						<div
+							class="grid gap-8 md:grid-cols-[70px_1fr_0.45fr]"
+						>
+							<!-- Number -->
+							<span
+								class="font-mono text-xs text-[var(--text-dim)] transition group-hover:text-[var(--accent)]"
+							>
+								{experience.number}
+							</span>
+
+							<!-- Main information -->
+							<div>
+								<p
+									class="font-mono text-[10px] uppercase tracking-[0.18em] text-[var(--accent)]"
+								>
+									{experience.type}
+								</p>
+
+								<h3
+									class="mt-3 text-2xl font-medium tracking-[-0.025em] text-[var(--text)] md:text-3xl"
+								>
+									{experience.company}
+								</h3>
+
+								<p
+									class="mt-2 text-sm text-[var(--text-muted)]"
+								>
+									{experience.role}
+								</p>
+
+								<p
+									class="mt-6 max-w-2xl text-[15px] leading-7 text-[var(--text-muted)]"
+								>
+									{experience.description}
+								</p>
+
+								<div
+									class="mt-6 flex flex-wrap items-center gap-x-3 gap-y-2"
+								>
+									{
+										experience.stack.map((technology, index) => (
+											<>
+												<span
+													class="font-mono text-[10px] uppercase tracking-[0.14em] text-[var(--text-dim)]"
+												>
+													{technology}
+												</span>
+
+												{
+													index < experience.stack.length - 1 && (
+														<span
+															class="text-[10px] text-[var(--border)]"
+														>
+															/
+														</span>
+													)
+												}
+											</>
+										))
+									}
+								</div>
+							</div>
+
+							<!-- Period -->
+							<div class="md:text-right">
+								<p
+									class="font-mono text-[10px] uppercase tracking-[0.16em] text-[var(--text-dim)]"
+								>
+									{experience.period}
+								</p>
+							</div>
+						</div>
+					</article>
+				))
+			}
+		</div>
+	</div>
+</section>

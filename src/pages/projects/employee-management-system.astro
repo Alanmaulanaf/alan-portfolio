@@ -1,0 +1,574 @@
+---
+import Layout from '../../layouts/Layout.astro';
+import Navbar from '../../components/Navbar.astro';
+
+const base = import.meta.env.BASE_URL.endsWith('/')
+	? import.meta.env.BASE_URL
+	: `${import.meta.env.BASE_URL}/`;
+
+const asset = (path: string) =>
+	`${base}${path.replace(/^\/+/, '')}`;
+
+const technologies = ['Laravel', 'PHP', 'Blade', 'MySQL', 'HTML', 'CSS'];
+
+const repositories = [
+	{
+		number: '01',
+		name: 'Employee Management System',
+		description:
+			'Source code aplikasi web manajemen data karyawan yang dikembangkan menggunakan Laravel, Blade, PHP, dan MySQL.',
+		tech: 'Laravel / PHP / Blade / MySQL',
+		url: 'https://github.com/Alanmaulanaf/Karyawan-Management',
+	},
+];
+---
+
+<Layout
+	title="Employee Management System — Alan Maulana Fajar"
+	description="Aplikasi web manajemen data karyawan berbasis Laravel dan MySQL."
+>
+	<Navbar />
+
+	<main>
+		<!-- Hero -->
+		<section class="mx-auto max-w-6xl px-6 pb-20 pt-36 md:px-8 md:pb-24 md:pt-40">
+			<a
+				href={`${base}#projects`}
+				class="group inline-flex items-center gap-2 font-mono text-[11px] uppercase tracking-[0.16em] text-[var(--text-dim)] transition hover:text-[var(--text)]"
+			>
+				<span class="transition-transform group-hover:-translate-x-1">←</span>
+				Back to Projects
+			</a>
+
+			<div class="mt-12 grid gap-12 border-t border-[var(--border)] pt-8 md:grid-cols-[1.45fr_0.55fr] md:gap-16">
+				<div>
+					<p class="font-mono text-xs uppercase tracking-[0.18em] text-[var(--accent)]">
+						Web Application / Academic Project
+					</p>
+
+					<h1 class="mt-5 max-w-4xl text-5xl font-medium tracking-[-0.045em] text-[var(--text)] md:text-7xl">
+						Employee Management System
+					</h1>
+
+					<p class="mt-6 max-w-3xl text-xl leading-8 text-[var(--text-muted)] md:text-2xl">
+						Web-Based Employee Data Management with Laravel.
+					</p>
+				</div>
+
+				<div class="grid grid-cols-2 gap-x-8 gap-y-7 text-sm md:grid-cols-1">
+					<div>
+						<p class="font-mono text-[10px] uppercase tracking-[0.16em] text-[var(--text-dim)]">
+							Project Type
+						</p>
+
+						<p class="mt-2 text-[var(--text)]">Academic Project</p>
+					</div>
+
+					<div>
+						<p class="font-mono text-[10px] uppercase tracking-[0.16em] text-[var(--text-dim)]">
+							System
+						</p>
+
+						<p class="mt-2 text-[var(--text)]">Web / Database</p>
+					</div>
+
+					<div class="col-span-2 md:col-span-1">
+						<p class="font-mono text-[10px] uppercase tracking-[0.16em] text-[var(--text-dim)]">
+							Stack
+						</p>
+
+						<p class="mt-2 leading-6 text-[var(--text-muted)]">
+							Laravel · PHP · Blade · MySQL · HTML · CSS
+						</p>
+					</div>
+				</div>
+			</div>
+		</section>
+
+		<!-- Main Preview -->
+		<section class="mx-auto max-w-6xl px-6 pb-24 md:px-8 md:pb-32">
+			<div class="overflow-hidden border border-[var(--border)] bg-[var(--surface)]">
+				<div class="bg-[var(--surface-soft)] p-5 md:p-8">
+					<p class="mb-5 text-center font-mono text-[10px] uppercase tracking-[0.18em] text-[var(--text-dim)]">
+						Application Preview
+					</p>
+
+					<div class="mx-auto max-w-5xl overflow-hidden border border-[var(--border)] bg-[var(--bg)]">
+						<img
+							src={asset('/images/karyawan/list-karyawan.png')}
+							alt="Tampilan daftar karyawan pada Employee Management System"
+							class="block h-auto w-full object-contain"
+						/>
+					</div>
+				</div>
+
+				<div class="grid gap-8 border-t border-[var(--border)] p-7 md:grid-cols-[1fr_auto] md:p-9">
+					<div>
+						<p class="font-mono text-[10px] uppercase tracking-[0.18em] text-[var(--accent)]">
+							Web Application
+						</p>
+
+						<h2 class="mt-4 text-2xl font-medium tracking-[-0.025em] text-[var(--text)] md:text-3xl">
+							Employee Data Management
+						</h2>
+
+						<p class="mt-4 max-w-2xl text-sm leading-7 text-[var(--text-muted)]">
+							Aplikasi web yang digunakan untuk mengelola data karyawan melalui
+							fitur CRUD, pencarian, dan filter data berdasarkan jabatan.
+						</p>
+					</div>
+
+					<div>
+						<p class="font-mono text-[10px] uppercase tracking-[0.18em] text-[var(--text-dim)]">
+							Technology
+						</p>
+
+						<div class="mt-4 flex max-w-sm flex-wrap gap-x-3 gap-y-2 font-mono text-[10px] uppercase tracking-[0.14em] text-[var(--text-muted)]">
+							{technologies.map((technology, index) => (
+								<>
+									<span>{technology}</span>
+
+									{index < technologies.length - 1 && (
+										<span class="text-[var(--border)]">/</span>
+									)}
+								</>
+							))}
+						</div>
+					</div>
+				</div>
+			</div>
+		</section>
+
+		<section class="mx-auto max-w-6xl border-t border-[var(--border)] px-6 py-24 md:px-8 md:py-32">
+			<div class="grid gap-12 md:grid-cols-[0.7fr_2fr] md:gap-16">
+				<div>
+					<div class="flex items-center gap-4">
+						<span class="border border-[var(--accent)] px-2.5 py-1 font-mono text-[11px] text-[var(--accent)]">
+							01
+						</span>
+
+						<p class="text-xs uppercase tracking-[0.2em] text-[var(--text-dim)]">
+							Overview
+						</p>
+					</div>
+				</div>
+
+				<div>
+					<h2 class="max-w-3xl text-3xl font-medium leading-tight tracking-[-0.03em] text-[var(--text)] md:text-5xl">
+						Managing Employee Data Through a Web Application.
+					</h2>
+
+					<div class="mt-8 max-w-3xl space-y-5 leading-7 text-[var(--text-muted)]">
+						<p>
+							Employee Management System merupakan aplikasi web yang
+							dikembangkan sebagai project akademik untuk menerapkan konsep
+							pengelolaan data menggunakan Laravel dan MySQL.
+						</p>
+
+						<p>
+							Aplikasi menyediakan fitur untuk menampilkan, menambahkan,
+							melihat, mengubah, dan menghapus data karyawan, serta pencarian
+							dan filter berdasarkan jabatan.
+						</p>
+					</div>
+				</div>
+			</div>
+		</section>
+
+		<section class="mx-auto max-w-6xl border-t border-[var(--border)] px-6 py-24 md:px-8 md:py-32">
+			<div class="grid gap-12 md:grid-cols-[0.7fr_2fr] md:gap-16">
+				<div>
+					<div class="flex items-center gap-4">
+						<span class="border border-[var(--accent)] px-2.5 py-1 font-mono text-[11px] text-[var(--accent)]">
+							02
+						</span>
+
+						<p class="text-xs uppercase tracking-[0.2em] text-[var(--text-dim)]">
+							Application Structure
+						</p>
+					</div>
+				</div>
+
+				<div>
+					<h2 class="max-w-3xl text-3xl font-medium leading-tight tracking-[-0.03em] text-[var(--text)] md:text-5xl">
+						Built with Laravel, Blade, and MySQL.
+					</h2>
+
+					<p class="mt-6 max-w-2xl leading-7 text-[var(--text-muted)]">
+						Laravel digunakan untuk menangani logic aplikasi, Blade untuk
+						membangun tampilan halaman, dan MySQL untuk menyimpan serta
+						mengelola data karyawan.
+					</p>
+
+					<div class="mt-14 border-t border-[var(--border)]">
+						<div class="grid gap-5 border-b border-[var(--border)] py-7 sm:grid-cols-[120px_1fr_auto]">
+							<span class="font-mono text-xs text-[var(--text-dim)]">01</span>
+
+							<div>
+								<p class="text-xs uppercase tracking-widest text-[var(--text-dim)]">
+									Web Interface
+								</p>
+
+								<h3 class="mt-2 text-xl text-[var(--text)]">
+									Blade / HTML / CSS
+								</h3>
+							</div>
+
+							<span class="text-sm text-[var(--accent)]">↓</span>
+						</div>
+
+						<div class="grid gap-5 border-b border-[var(--border)] py-7 sm:grid-cols-[120px_1fr_auto]">
+							<span class="font-mono text-xs text-[var(--text-dim)]">02</span>
+
+							<div>
+								<p class="text-xs uppercase tracking-widest text-[var(--text-dim)]">
+									Application
+								</p>
+
+								<h3 class="mt-2 text-xl text-[var(--text)]">Laravel / PHP</h3>
+							</div>
+
+							<span class="text-sm text-[var(--accent)]">↓</span>
+						</div>
+
+						<div class="grid gap-5 border-b border-[var(--border)] py-7 sm:grid-cols-[120px_1fr]">
+							<span class="font-mono text-xs text-[var(--text-dim)]">03</span>
+
+							<div>
+								<p class="text-xs uppercase tracking-widest text-[var(--text-dim)]">
+									Database
+								</p>
+
+								<h3 class="mt-2 text-xl text-[var(--text)]">MySQL</h3>
+							</div>
+						</div>
+					</div>
+				</div>
+			</div>
+		</section>
+
+		<section class="mx-auto max-w-6xl border-t border-[var(--border)] px-6 py-24 md:px-8 md:py-32">
+			<div class="grid gap-12 md:grid-cols-[0.7fr_2fr] md:gap-16">
+				<div>
+					<div class="flex items-center gap-4">
+						<span class="border border-[var(--accent)] px-2.5 py-1 font-mono text-[11px] text-[var(--accent)]">
+							03
+						</span>
+
+						<p class="text-xs uppercase tracking-[0.2em] text-[var(--text-dim)]">
+							Key Features
+						</p>
+					</div>
+				</div>
+
+				<div>
+					<div class="border-t border-[var(--border)]">
+						<!-- 01 -->
+						<div class="group grid gap-5 border-b border-[var(--border)] py-8 sm:grid-cols-[80px_1fr]">
+							<span class="font-mono text-xs text-[var(--text-dim)] transition group-hover:text-[var(--accent)]">
+								01
+							</span>
+
+							<div>
+								<h3 class="text-xl text-[var(--text)] transition group-hover:text-[var(--accent)]">
+									Employee Dashboard
+								</h3>
+
+								<p class="mt-3 max-w-2xl leading-7 text-[var(--text-muted)]">
+									Dashboard menampilkan ringkasan data karyawan dan informasi
+									terkait jabatan.
+								</p>
+							</div>
+						</div>
+
+						<!-- 02 -->
+						<div class="group grid gap-5 border-b border-[var(--border)] py-8 sm:grid-cols-[80px_1fr]">
+							<span class="font-mono text-xs text-[var(--text-dim)] transition group-hover:text-[var(--accent)]">
+								02
+							</span>
+
+							<div>
+								<h3 class="text-xl text-[var(--text)] transition group-hover:text-[var(--accent)]">
+									Employee CRUD
+								</h3>
+
+								<p class="mt-3 max-w-2xl leading-7 text-[var(--text-muted)]">
+									Data karyawan dapat ditambahkan, dilihat, diubah, dan dihapus
+									melalui aplikasi.
+								</p>
+							</div>
+						</div>
+
+						<!-- 03 -->
+						<div class="group grid gap-5 border-b border-[var(--border)] py-8 sm:grid-cols-[80px_1fr]">
+							<span class="font-mono text-xs text-[var(--text-dim)] transition group-hover:text-[var(--accent)]">
+								03
+							</span>
+
+							<div>
+								<h3 class="text-xl text-[var(--text)] transition group-hover:text-[var(--accent)]">
+									Search & Filter
+								</h3>
+
+								<p class="mt-3 max-w-2xl leading-7 text-[var(--text-muted)]">
+									Pencarian membantu menemukan data karyawan, dengan filter
+									berdasarkan jabatan untuk mempermudah pengelolaan data.
+								</p>
+							</div>
+						</div>
+					</div>
+				</div>
+			</div>
+		</section>
+
+		<section class="mx-auto max-w-6xl border-t border-[var(--border)] px-6 py-24 md:px-8 md:py-32">
+			<div class="grid gap-12 md:grid-cols-[0.7fr_2fr] md:gap-16">
+				<div>
+					<div class="flex items-center gap-4">
+						<span class="border border-[var(--accent)] px-2.5 py-1 font-mono text-[11px] text-[var(--accent)]">
+							04
+						</span>
+
+						<p class="text-xs uppercase tracking-[0.2em] text-[var(--text-dim)]">
+							Screenshots
+						</p>
+					</div>
+				</div>
+
+				<div>
+					<h2 class="max-w-3xl text-3xl font-medium tracking-[-0.03em] text-[var(--text)] md:text-5xl">
+						A Closer Look at the Application.
+					</h2>
+
+					<p class="mt-5 max-w-2xl leading-7 text-[var(--text-muted)]">
+						Beberapa tampilan aplikasi yang menunjukkan dashboard dan proses
+						pengelolaan data karyawan.
+					</p>
+				</div>
+			</div>
+
+			<div class="mx-auto mt-16 grid max-w-5xl gap-6 md:grid-cols-2">
+				<!-- Dashboard -->
+				<figure class="border border-[var(--border)] bg-[var(--surface)] transition duration-300 hover:border-[var(--text-dim)]">
+					<button
+						type="button"
+						class="group/preview flex aspect-[16/9] w-full cursor-zoom-in items-center justify-center overflow-hidden bg-[var(--surface-soft)] p-4"
+						data-image-preview
+						data-src={asset('images/karyawan/dashboard.png')}
+						data-alt="Dashboard Employee Management System"
+						aria-label="Perbesar screenshot dashboard"
+					>
+						<img
+							src={asset('images/karyawan/dashboard.png')}
+							alt="Dashboard Employee Management System"
+							class="max-h-full max-w-full object-contain transition-transform duration-500 ease-out group-hover/preview:scale-[1.04]"
+						/>
+					</button>
+
+					<figcaption class="border-t border-[var(--border)] p-5">
+						<div class="flex gap-4">
+							<span class="pt-0.5 font-mono text-[10px] text-[var(--accent)]">
+								01
+							</span>
+
+							<div>
+								<p class="text-sm text-[var(--text)]">Dashboard</p>
+
+								<p class="mt-1 text-xs leading-5 text-[var(--text-dim)]">
+									Ringkasan data karyawan dan jabatan dalam aplikasi.
+								</p>
+							</div>
+						</div>
+					</figcaption>
+				</figure>
+
+				<!-- Employee List -->
+				<figure class="border border-[var(--border)] bg-[var(--surface)] transition duration-300 hover:border-[var(--text-dim)]">
+					<button
+						type="button"
+						class="group/preview flex aspect-[16/9] w-full cursor-zoom-in items-center justify-center overflow-hidden bg-[var(--surface-soft)] p-4"
+						data-image-preview
+						data-src={asset('images/karyawan/list-karyawan.png')}
+						data-alt="Daftar data karyawan"
+						aria-label="Perbesar screenshot daftar karyawan"
+					>
+						<img
+							src={asset('images/karyawan/list-karyawan.png')}
+							alt="Daftar data karyawan"
+							class="max-h-full max-w-full object-contain transition-transform duration-500 ease-out group-hover/preview:scale-[1.04]"
+						/>
+					</button>
+
+					<figcaption class="border-t border-[var(--border)] p-5">
+						<div class="flex gap-4">
+							<span class="pt-0.5 font-mono text-[10px] text-[var(--accent)]">
+								02
+							</span>
+
+							<div>
+								<p class="text-sm text-[var(--text)]">Employee List</p>
+
+								<p class="mt-1 text-xs leading-5 text-[var(--text-dim)]">
+									Daftar data karyawan dengan fitur pencarian, filter, dan
+									pengelolaan data.
+								</p>
+							</div>
+						</div>
+					</figcaption>
+				</figure>
+			</div>
+			<dialog
+				id="image-lightbox"
+				class="m-auto max-h-[94vh] max-w-[94vw] bg-transparent p-0"
+			>
+				<div class="relative flex items-center justify-center border border-[var(--border)] bg-[var(--surface)] p-4 md:p-6">
+					<button
+						type="button"
+						id="close-lightbox"
+						class="absolute right-3 top-3 z-20 flex h-10 w-10 items-center justify-center border border-[var(--border)] bg-[var(--bg)] text-xl text-[var(--text-muted)] transition hover:border-[var(--accent)] hover:text-[var(--text)]"
+						aria-label="Tutup preview gambar"
+					>
+						×
+					</button>
+
+					<img
+						id="lightbox-image"
+						src=""
+						alt=""
+						class="block max-h-[84vh] max-w-[88vw] object-contain"
+					/>
+				</div>
+			</dialog>
+		</section>
+
+		<!-- Source Code -->
+		<section class="mx-auto max-w-6xl border-t border-[var(--border)] px-6 py-24 md:px-8 md:py-32">
+			<div class="grid gap-12 md:grid-cols-[0.7fr_2fr] md:gap-16">
+				<div>
+					<div class="flex items-center gap-4">
+						<span class="border border-[var(--accent)] px-2.5 py-1 font-mono text-[11px] text-[var(--accent)]">
+							05
+						</span>
+
+						<p class="text-xs uppercase tracking-[0.2em] text-[var(--text-dim)]">
+							Source Code
+						</p>
+					</div>
+
+					<p class="mt-5 max-w-xs text-sm leading-6 text-[var(--text-dim)]">
+						Source code Employee Management System tersedia melalui repository
+						GitHub berikut.
+					</p>
+				</div>
+
+				<div class="space-y-4">
+					{repositories.map((repo) => (
+						<article class="group border border-[var(--border)] bg-[var(--surface)] px-6 py-6 transition duration-300 hover:border-[var(--text-dim)] md:px-7 md:py-7">
+							<div class="grid gap-5 sm:grid-cols-[auto_1fr_auto]">
+								<div>
+									<span class="font-mono text-xs text-[var(--text-dim)] transition group-hover:text-[var(--accent)]">
+										{repo.number}
+									</span>
+								</div>
+
+								<div>
+									<p class="text-xs uppercase tracking-[0.16em] text-[var(--text-dim)]">
+										{repo.tech}
+									</p>
+
+									<h3 class="mt-2 text-xl font-medium tracking-tight text-[var(--text)] md:text-2xl">
+										{repo.name}
+									</h3>
+
+									<p class="mt-3 max-w-2xl text-sm leading-7 text-[var(--text-muted)] md:text-base">
+										{repo.description}
+									</p>
+								</div>
+
+								<div class="sm:pl-8">
+									<a
+										href={repo.url}
+										target="_blank"
+										rel="noopener noreferrer"
+										class="group/link inline-flex items-center gap-2 border-b border-[var(--border)] pb-1 text-sm text-[var(--text-muted)] transition hover:border-[var(--accent)] hover:text-[var(--accent)]"
+									>
+										GitHub
+										<span class="transition-transform duration-200 group-hover/link:-translate-y-0.5 group-hover/link:translate-x-0.5">
+											↗
+										</span>
+									</a>
+								</div>
+							</div>
+						</article>
+					))}
+				</div>
+			</div>
+		</section>
+	</main>
+</Layout>
+<script>
+	function initImageLightbox() {
+		const lightbox = document.querySelector('#image-lightbox');
+		const lightboxImage = document.querySelector('#lightbox-image');
+		const closeButton = document.querySelector('#close-lightbox');
+
+		if (
+			!(lightbox instanceof HTMLDialogElement) ||
+			!(lightboxImage instanceof HTMLImageElement)
+		) {
+			return;
+		}
+
+		const previewButtons = document.querySelectorAll('[data-image-preview]');
+
+		previewButtons.forEach((button) => {
+			if (button.getAttribute('data-lightbox-ready') === 'true') {
+				return;
+			}
+
+			button.setAttribute('data-lightbox-ready', 'true');
+
+			button.addEventListener('click', () => {
+				const src = button.getAttribute('data-src');
+				const alt = button.getAttribute('data-alt');
+
+				if (!src) return;
+
+				lightboxImage.src = src;
+				lightboxImage.alt = alt ?? '';
+
+				lightbox.showModal();
+			});
+		});
+
+		if (
+			closeButton &&
+			closeButton.getAttribute('data-lightbox-ready') !== 'true'
+		) {
+			closeButton.setAttribute('data-lightbox-ready', 'true');
+
+			closeButton.addEventListener('click', () => {
+				lightbox.close();
+			});
+		}
+
+		if (lightbox.getAttribute('data-lightbox-ready') !== 'true') {
+			lightbox.setAttribute('data-lightbox-ready', 'true');
+
+			lightbox.addEventListener('click', (event) => {
+				if (event.target === lightbox) {
+					lightbox.close();
+				}
+			});
+
+			lightbox.addEventListener('close', () => {
+				lightboxImage.src = '';
+				lightboxImage.alt = '';
+			});
+		}
+	}
+
+	initImageLightbox();
+
+	document.addEventListener('astro:page-load', initImageLightbox);
+</script>

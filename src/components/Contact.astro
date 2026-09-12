@@ -1,0 +1,124 @@
+---
+const contacts = [
+	{
+		label: 'Email',
+		value: 'alanmaulanafajarr@gmail.com',
+		href: 'mailto:alanmaulanafajarr@gmail.com',
+	},
+	{
+		label: 'GitHub',
+		value: 'github.com/Alanmaulanaf',
+		href: 'https://github.com/Alanmaulanaf',
+	},
+	{
+		label: 'LinkedIn',
+		value: 'linkedin.com/in/alan-maulana-fajar/',
+		href: 'https://linkedin.com/in/alan-maulana-fajar/',
+	},
+];
+---
+
+<section
+	id="contact"
+	class="mx-auto max-w-6xl border-t border-[var(--border)] px-6 py-24 md:px-8 md:py-32"
+>
+	<div class="grid gap-12 md:grid-cols-[0.7fr_2fr] md:gap-16">
+		<!-- Section label -->
+		<div>
+			<div class="flex items-center gap-4">
+				<span
+					class="border border-[var(--accent)] px-2.5 py-1 font-mono text-[11px] text-[var(--accent)]"
+				>
+					05
+				</span>
+
+				<p
+					class="text-xs uppercase tracking-[0.2em] text-[var(--text-dim)]"
+				>
+					Contact
+				</p>
+			</div>
+		</div>
+
+		<!-- Main content -->
+		<div>
+			<p
+				class="mb-5 font-mono text-xs uppercase tracking-[0.18em] text-[var(--accent)]"
+			>
+				Let's Connect
+			</p>
+
+			<h2
+				class="max-w-3xl text-3xl font-medium leading-tight tracking-[-0.03em] text-[var(--text)] md:text-5xl"
+			>
+				Open to New Opportunities.
+			</h2>
+
+			<p
+				class="mt-6 max-w-2xl text-[15px] leading-7 text-[var(--text-muted)]"
+			>
+				Saya terbuka untuk peluang sebagai Junior Software Developer,
+				terutama di bidang mobile development, serta kesempatan untuk
+				terus berkembang di web dan backend.
+			</p>
+
+			<!-- Main CTA -->
+			<div class="mt-10">
+				<a
+					href="mailto:alanmaulanafajarr@gmail.com"
+					class="group inline-flex items-center gap-4 text-xl font-medium text-[var(--text)] md:text-2xl"
+				>
+					<span
+						class="border-b border-[var(--accent)] pb-1 transition duration-300 group-hover:text-[var(--accent)]"
+					>
+						Send Me an Email
+					</span>
+
+					<span
+						class="text-[var(--accent)] transition-transform duration-300 group-hover:-translate-y-1 group-hover:translate-x-1"
+					>
+						↗
+					</span>
+				</a>
+			</div>
+
+			<!-- Contact links -->
+			<div class="mt-16 border-t border-[var(--border)]">
+				{
+					contacts.map((contact) => (
+						<a
+							href={contact.href}
+							target={contact.label !== 'Email' ? '_blank' : undefined}
+							rel={contact.label !== 'Email'
+								? 'noopener noreferrer'
+								: undefined}
+							class="group grid gap-2 border-b border-[var(--border)] py-5 transition md:grid-cols-[0.6fr_1.4fr] md:items-center"
+						>
+							<span
+								class="font-mono text-[10px] uppercase tracking-[0.18em] text-[var(--text-dim)]"
+							>
+								{contact.label}
+							</span>
+
+							<div
+								class="flex items-center justify-between gap-4"
+							>
+								<span
+									class="text-sm text-[var(--text-muted)] transition duration-300 group-hover:text-[var(--text)]"
+								>
+									{contact.value}
+								</span>
+
+								<span
+									class="text-[var(--text-dim)] transition duration-300 group-hover:-translate-y-0.5 group-hover:translate-x-0.5 group-hover:text-[var(--accent)]"
+								>
+									↗
+								</span>
+							</div>
+						</a>
+					))
+				}
+			</div>
+		</div>
+	</div>
+</section>

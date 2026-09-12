@@ -1,0 +1,254 @@
+---
+const base = import.meta.env.BASE_URL.endsWith('/')
+	? import.meta.env.BASE_URL
+	: `${import.meta.env.BASE_URL}/`;
+
+const asset = (path: string) => `${base}${path.replace(/^\/+/, '')}`;
+
+const projects = [
+	{
+		number: '01',
+		title: 'EDOM',
+		slug: 'edom',
+		category: 'Software System / Thesis Project',
+		description:
+			'Sistem evaluasi dosen terintegrasi yang menggabungkan aplikasi mobile Flutter, REST API, database relasional, visualisasi data, dan analisis sentimen menggunakan Model Fine-Tuning IndoRoBERTa.',
+		stack: ['Flutter', 'Dart', 'Express.js', 'Flask', 'MySQL', 'IndoRoBERTa'],
+		image: asset('images/edom/screenshots/hasil-evaluasi.png'),
+		type: 'mobile',
+		featured: true,
+	},
+	{
+		number: '02',
+		title: 'Prediksi Kualitas AMDK',
+		slug: 'prediksi-kualitas-amdk',
+		category: 'Web Application / Academic Project',
+		description:
+			'Aplikasi web untuk melakukan prediksi kualitas Air Minum Dalam Kemasan (AMDK) menggunakan algoritma Support Vector Machine (SVM), dengan Laravel sebagai aplikasi utama dan Flask sebagai service machine learning.',
+		stack: [
+			'Laravel',
+			'PHP',
+			'Blade',
+			'Flask',
+			'Python',
+			'SVM',
+			'Tailwind CSS',
+		],
+		image: asset('images/amdk/dashboard.png'),
+		type: 'web',
+		featured: false,
+	},
+	{
+		number: '03',
+		title: 'Employee Management System',
+		slug: 'employee-management-system',
+		category: 'Web Application / Academic Project',
+		description:
+			'Aplikasi web manajemen data karyawan berbasis Laravel yang dikembangkan sebagai tugas kuliah. Aplikasi ini menyediakan dashboard ringkasan, pencarian dan filter data berdasarkan jabatan, serta fitur CRUD untuk mengelola data karyawan.',
+		stack: ['Laravel', 'PHP', 'Blade', 'MySQL', 'HTML', 'CSS'],
+		image: asset('images/karyawan/dashboard.png'),
+		type: 'web',
+		featured: false,
+	},
+];
+---
+
+<section
+	id="projects"
+	class="mx-auto max-w-6xl border-t border-[var(--border)] px-6 py-24 md:px-8 md:py-32"
+>
+	<!-- Section heading -->
+	<div class="mb-16 grid gap-10 md:grid-cols-[0.7fr_2fr] md:gap-16">
+		<div>
+			<div class="flex items-center gap-4">
+				<span class="border border-[var(--accent)] px-2.5 py-1 font-mono text-[11px] text-[var(--accent)]">
+					02
+				</span>
+
+				<p class="text-xs uppercase tracking-[0.2em] text-[var(--text-dim)]">
+					Projects
+				</p>
+			</div>
+		</div>
+
+		<div class="flex flex-col gap-6 md:flex-row md:items-end md:justify-between">
+			<div>
+				<p class="mb-4 font-mono text-xs uppercase tracking-[0.18em] text-[var(--accent)]">
+					Mobile / Web / Backend
+				</p>
+
+				<h2 class="text-4xl font-medium tracking-[-0.035em] text-[var(--text)] md:text-6xl">
+					Selected Projects
+				</h2>
+			</div>
+
+			<p class="max-w-sm text-sm leading-6 text-[var(--text-muted)] md:text-right">
+				Beberapa project yang menunjukkan pengalaman saya dalam mengembangkan
+				aplikasi mobile, web, backend, database, dan integrasi machine learning.
+			</p>
+		</div>
+	</div>
+
+	<!-- Project list -->
+	<div class="border-t border-[var(--border)]">
+		{projects.map((project, index) => (
+			<article
+				class="project-row group border-b border-[var(--border)] py-12 md:py-16"
+				data-project-reveal
+				style={`--delay: ${index * 100}ms`}
+			>
+				<div class="grid gap-10 md:grid-cols-[70px_0.9fr_1.15fr] md:gap-12">
+					<!-- Number -->
+					<div>
+						<span class="font-mono text-xs text-[var(--text-dim)] transition duration-300 group-hover:text-[var(--accent)]">
+							{project.number}
+						</span>
+					</div>
+
+					<!-- Project information -->
+					<div class="flex flex-col justify-between">
+						<div>
+							<div class="mb-4 flex flex-wrap items-center gap-3">
+								<p class="font-mono text-[10px] uppercase tracking-[0.18em] text-[var(--text-dim)]">
+									{project.category}
+								</p>
+
+								{project.featured && (
+									<>
+										<span class="text-[var(--border)]">/</span>
+
+										<span class="font-mono text-[10px] uppercase tracking-[0.18em] text-[var(--accent)]">
+											Featured
+										</span>
+									</>
+								)}
+							</div>
+
+							<h3 class="text-3xl font-medium tracking-[-0.03em] text-[var(--text)] transition duration-300 group-hover:text-[var(--accent)] md:text-4xl">
+								{project.title}
+							</h3>
+
+							<p class="mt-5 max-w-lg text-[15px] leading-7 text-[var(--text-muted)]">
+								{project.description}
+							</p>
+
+							<!-- Technology -->
+							<div class="mt-7 flex flex-wrap items-center gap-x-3 gap-y-2">
+								{project.stack.map((technology, index) => (
+									<>
+										<span class="font-mono text-[10px] uppercase tracking-[0.14em] text-[var(--text-dim)] transition hover:text-[var(--text)]">
+											{technology}
+										</span>
+
+										{index < project.stack.length - 1 && (
+											<span class="text-[10px] text-[var(--border)]">/</span>
+										)}
+									</>
+								))}
+							</div>
+						</div>
+
+						<!-- Project link -->
+						<div class="mt-10">
+							<a
+								href={`${base}projects/${project.slug}/`}
+								class="group/link inline-flex items-center gap-3 text-sm text-[var(--text)]"
+							>
+								<span class="border-b border-[var(--border)] pb-1 transition duration-300 group-hover/link:border-[var(--accent)] group-hover/link:text-[var(--accent)]">
+									View Project
+								</span>
+
+								<span class="text-[var(--text-dim)] transition duration-300 group-hover/link:translate-x-1 group-hover/link:text-[var(--accent)]">
+									→
+								</span>
+							</a>
+						</div>
+					</div>
+
+					<!-- Project preview -->
+					<a
+						href={`${base}projects/${project.slug}/`}
+						class="relative block w-full self-start overflow-hidden border border-[var(--border)] bg-[var(--surface)] transition duration-300 hover:border-[var(--text-dim)]"
+					>
+						<div class="absolute left-4 top-4 z-10 border border-[var(--border)] bg-[var(--bg)] px-2.5 py-1 font-mono text-[9px] uppercase tracking-[0.16em] text-[var(--text-dim)]">
+							{project.number} / Preview
+						</div>
+
+						<div
+							class:list={[
+								'flex items-center justify-center',
+								project.type === 'web'
+									? 'bg-[var(--surface-soft)] p-4 pt-14 md:p-5 md:pt-14'
+									: 'min-h-[300px] p-8 pt-14 md:min-h-[380px] md:p-10 md:pt-16',
+							]}
+						>
+							{project.type === 'web' ? (
+								<div class="w-full overflow-hidden border border-[var(--border)] bg-[var(--bg)]">
+									<img
+										src={project.image}
+										alt={`${project.title} project preview`}
+										class="block h-auto w-full object-contain transition duration-500 ease-out group-hover:scale-[1.01]"
+									/>
+								</div>
+							) : (
+								<img
+									src={project.image}
+									alt={`${project.title} project preview`}
+									class="max-h-[330px] max-w-full object-contain transition duration-500 ease-out group-hover:scale-[1.02]"
+								/>
+							)}
+						</div>
+
+						<div class="absolute bottom-0 left-0 h-px w-0 bg-[var(--accent)] transition-all duration-500 group-hover:w-full"></div>
+					</a>
+				</div>
+			</article>
+		))}
+	</div>
+</section>
+
+<script>
+	const projectRows = document.querySelectorAll('[data-project-reveal]');
+
+	const projectObserver = new IntersectionObserver(
+		(entries) => {
+			entries.forEach((entry) => {
+				if (entry.isIntersecting) {
+					entry.target.classList.add('is-visible');
+					projectObserver.unobserve(entry.target);
+				}
+			});
+		},
+		{
+			threshold: 0.1,
+		},
+	);
+
+	projectRows.forEach((row) => {
+		projectObserver.observe(row);
+	});
+</script>
+
+<style>
+	.project-row {
+		opacity: 0;
+		transform: translateY(24px);
+
+		transition:
+			opacity 650ms ease var(--delay),
+			transform 650ms ease var(--delay);
+	}
+
+	.project-row.is-visible {
+		opacity: 1;
+		transform: translateY(0);
+	}
+
+	@media (prefers-reduced-motion: reduce) {
+		.project-row {
+			opacity: 1;
+			transform: none;
+			transition: none;
+		}
+	}
+</style>

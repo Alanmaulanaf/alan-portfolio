@@ -1,0 +1,171 @@
+---
+const stacks = [
+	{
+		category: 'Mobile',
+		description: 'Pengembangan aplikasi mobile',
+		items: ['Flutter', 'Dart', 'Android'],
+	},
+	{
+		category: 'Web',
+		description: 'Pengembangan aplikasi web',
+		items: ['Laravel', 'PHP', 'Blade', 'HTML', 'CSS', 'JavaScript'],
+	},
+	{
+		category: 'Backend',
+		description: 'API dan layanan backend',
+		items: ['Express.js', 'Node.js', 'Flask', 'REST API'],
+	},
+	{
+		category: 'Database & Tools',
+		description: 'Database dan tools pendukung development',
+		items: ['MySQL', 'SQLite', 'Git', 'GitHub', 'Postman'],
+	},
+];
+---
+
+<section
+	id="stack"
+	class="mx-auto max-w-6xl border-t border-[var(--border)] px-6 py-24 md:px-8 md:py-32"
+>
+	<!-- Section heading -->
+	<div class="grid gap-12 md:grid-cols-[0.7fr_2fr] md:gap-16">
+		<div>
+			<div class="flex items-center gap-4">
+				<span class="border border-[var(--accent)] px-2.5 py-1 font-mono text-[11px] text-[var(--accent)]">
+					04
+				</span>
+
+				<p class="text-xs uppercase tracking-[0.2em] text-[var(--text-dim)]">
+					Tech Stack
+				</p>
+			</div>
+		</div>
+
+		<div>
+			<p class="mb-5 font-mono text-xs uppercase tracking-[0.18em] text-[var(--accent)]">
+				Tools & Technologies
+			</p>
+
+			<h2 class="max-w-3xl text-3xl font-medium leading-tight tracking-[-0.03em] text-[var(--text)] md:text-5xl">
+				Technologies I Use in Development.
+			</h2>
+
+			<p class="mt-6 max-w-2xl text-[15px] leading-7 text-[var(--text-muted)]">
+				Teknologi yang saya gunakan dalam mengembangkan aplikasi mobile, web,
+				backend, mengelola database, serta mendukung proses development melalui
+				berbagai project yang saya kerjakan.
+			</p>
+		</div>
+	</div>
+
+	<!-- Technology groups -->
+	<div class="mt-16 md:ml-[calc(25%+1rem)]">
+		<div class="border-t border-[var(--border)]">
+			{stacks.map((stack, index) => (
+				<div
+					class="stack-row group relative grid gap-7 border-b border-[var(--border)] py-9 sm:grid-cols-[0.85fr_2fr]"
+					data-reveal
+					style={`--delay: ${index * 90}ms`}
+				>
+					<!-- Hover line -->
+					<div class="absolute bottom-[-1px] left-0 h-px w-0 bg-[var(--accent)] transition-all duration-500 group-hover:w-full" />
+
+					<!-- Category -->
+					<div>
+						<div class="flex items-start gap-4">
+							<span class="pt-1 font-mono text-[10px] text-[var(--text-dim)] transition duration-300 group-hover:text-[var(--accent)]">
+								0{index + 1}
+							</span>
+
+							<div>
+								<h3 class="text-sm font-medium text-[var(--text)] transition duration-300 group-hover:text-[var(--accent)]">
+									{stack.category}
+								</h3>
+
+								<p class="mt-2 max-w-[190px] text-xs leading-5 text-[var(--text-dim)]">
+									{stack.description}
+								</p>
+							</div>
+						</div>
+					</div>
+
+					<!-- Technologies -->
+					<div class="flex flex-wrap content-start items-center gap-x-6 gap-y-4">
+						{stack.items.map((item) => (
+							<span class="stack-item relative cursor-default text-lg tracking-[-0.02em] text-[var(--text-muted)] transition duration-300 hover:-translate-y-0.5 hover:text-[var(--text)] md:text-xl">
+								{item}
+							</span>
+						))}
+					</div>
+				</div>
+			))}
+		</div>
+	</div>
+</section>
+
+<script>
+	const revealItems = document.querySelectorAll('[data-reveal]');
+
+	const observer = new IntersectionObserver(
+		(entries) => {
+			entries.forEach((entry) => {
+				if (entry.isIntersecting) {
+					entry.target.classList.add('is-visible');
+					observer.unobserve(entry.target);
+				}
+			});
+		},
+		{
+			threshold: 0.15,
+		},
+	);
+
+	revealItems.forEach((item) => observer.observe(item));
+</script>
+
+<style>
+	.stack-row {
+		opacity: 0;
+		transform: translateY(18px);
+
+		transition:
+			opacity 600ms ease var(--delay),
+			transform 600ms ease var(--delay);
+	}
+
+	.stack-row.is-visible {
+		opacity: 1;
+		transform: translateY(0);
+	}
+
+	.stack-item::after {
+		content: '';
+		position: absolute;
+		left: 0;
+		bottom: -5px;
+
+		width: 0;
+		height: 1px;
+
+		background: var(--accent);
+
+		transition: width 250ms ease;
+	}
+
+	.stack-item:hover::after {
+		width: 100%;
+	}
+
+	@media (prefers-reduced-motion: reduce) {
+		.stack-row {
+			opacity: 1;
+			transform: none;
+			transition: none;
+		}
+
+		.stack-item,
+		.stack-item::after {
+			transition: none;
+		}
+	}
+</style>

@@ -1,23 +1,125 @@
+---
+import '../styles/global.css';
+
+interface Props {
+	title?: string;
+	description?: string;
+}
+
+const {
+	title = 'Alan Maulana Fajar — Junior Software Developer',
+	description = 'Portfolio Alan Maulana Fajar, Junior Software Developer dengan fokus pada mobile development serta pengalaman dalam web dan backend development.',
+} = Astro.props;
+
+const base = import.meta.env.BASE_URL.endsWith('/')
+	? import.meta.env.BASE_URL
+	: `${import.meta.env.BASE_URL}/`;
+---
+
 <!doctype html>
 <html lang="en">
 	<head>
-		<meta charset="utf-8" />
-		<meta name="viewport" content="width=device-width" />
-		<link rel="icon" type="image/svg+xml" href="/favicon.svg" />
-		<link rel="icon" href="/favicon.ico" />
-		<meta name="generator" content={Astro.generator} />
-		<title>Astro Basics</title>
+		<meta charset="UTF-8" />
+
+		<meta name="viewport" content="width=device-width, initial-scale=1" />
+
+		<title>{title}</title>
+
+		<meta name="description" content={description} />
+
+		<meta name="author" content="Alan Maulana Fajar" />
+
+		<!-- Favicon -->
+		<link rel="icon" type="image/svg+xml" href={`${base}favicon.svg`} />
+
+		<!-- Open Graph -->
+		<meta property="og:type" content="website" />
+		<meta property="og:title" content={title} />
+		<meta property="og:description" content={description} />
+
+		<!-- Theme -->
+		<meta name="theme-color" content="#0d1117" />
 	</head>
+
 	<body>
-		<slot />
+		<!-- Global decorative background -->
+		<div class="site-background" aria-hidden="true">
+			<div class="background-grid"></div>
+
+			<div class="abstract-box abstract-box-1"></div>
+			<div class="abstract-box abstract-box-2"></div>
+			<div class="abstract-box abstract-box-3"></div>
+
+			<div class="abstract-line abstract-line-1"></div>
+			<div class="abstract-line abstract-line-2"></div>
+			<div class="abstract-line abstract-line-3"></div>
+
+			<div class="background-mark background-mark-1"></div>
+			<div class="background-mark background-mark-2"></div>
+		</div>
+
+		<!-- Website content -->
+		<div class="relative z-10">
+			<slot />
+		</div>
 	</body>
 </html>
+<script>
+	const prefersReducedMotion = window.matchMedia(
+		'(prefers-reduced-motion: reduce)',
+	).matches;
 
-<style>
-	html,
-	body {
-		margin: 0;
-		width: 100%;
-		height: 100%;
+	const randomBetween = (min, max) => {
+		return Math.random() * (max - min) + min;
+	};
+
+	function moveBox(box) {
+		const x = randomBetween(7, 93);
+		const y = randomBetween(8, 92);
+		const rotation = randomBetween(-40, 40);
+
+		box.style.setProperty('--x', `${x}%`);
+		box.style.setProperty('--y', `${y}%`);
+		box.style.setProperty('--rotation', `${rotation}deg`);
 	}
-</style>
+
+	function moveLine(line) {
+		const x = randomBetween(8, 92);
+		const y = randomBetween(8, 92);
+
+		const rotation = randomBetween(-80, 80);
+		const width = randomBetween(220, 620);
+
+		line.style.setProperty('--x', `${x}%`);
+		line.style.setProperty('--y', `${y}%`);
+		line.style.setProperty('--rotation', `${rotation}deg`);
+		line.style.setProperty('--line-width', `${width}px`);
+	}
+
+	function randomizeBackground() {
+		const boxes = document.querySelectorAll('.abstract-box');
+		const lines = document.querySelectorAll('.abstract-line');
+
+		boxes.forEach((box, index) => {
+			setTimeout(() => {
+				moveBox(box);
+			}, index * 350);
+		});
+
+		lines.forEach((line, index) => {
+			setTimeout(() => {
+				moveLine(line);
+			}, index * 250);
+		});
+	}
+
+	if (!prefersReducedMotion) {
+		setTimeout(() => {
+			randomizeBackground();
+		}, 2500);
+
+		setInterval(() => {
+			randomizeBackground();
+		}, 15000);
+	}
+</script>
